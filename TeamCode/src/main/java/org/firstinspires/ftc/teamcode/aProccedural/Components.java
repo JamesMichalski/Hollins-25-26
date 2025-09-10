@@ -1,10 +1,13 @@
 package org.firstinspires.ftc.teamcode.aProccedural;
 
+
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-
-// Class to deal with robot hardware issues
+/**
+ * File to store all hardware code
+ */
 public class Components {
 
     //Instantiate Drive Motors
