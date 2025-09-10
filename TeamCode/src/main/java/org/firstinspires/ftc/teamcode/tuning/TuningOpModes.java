@@ -70,12 +70,6 @@ public final class TuningOpModes {
 
     private static PinpointView makePinpointView(PinpointLocalizer pl) {
         return new PinpointView() {
-            //todo make sure this is right
-            @Override
-            public float getHeadingVelocity() {
-                return 0;
-            }
-            //end of todo
 
             GoBildaPinpointDriver.EncoderDirection parDirection = pl.initialParDirection;
             GoBildaPinpointDriver.EncoderDirection perpDirection = pl.initialPerpDirection;

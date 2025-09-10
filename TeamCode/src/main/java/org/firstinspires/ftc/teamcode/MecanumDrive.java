@@ -63,6 +63,11 @@ public final class MecanumDrive {
                 RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD;
 
         // drive model parameters
+        public double inPerTick = 1;
+        public double lateralInPerTick = inPerTick;
+        public double trackWidthTicks = 0;
+
+        // drive model parameters
         public double inPerTick = 1.998; //todo
         public double lateralInPerTick = inPerTick;
         public double trackWidthTicks = 0; //todo
