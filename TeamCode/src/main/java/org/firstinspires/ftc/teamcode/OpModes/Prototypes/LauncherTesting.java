@@ -5,21 +5,25 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+import org.firstinspires.ftc.teamcode.aProccedural.Input;
+
 @TeleOp
 public class LauncherTesting extends OpMode {
 
     //left
     private DcMotor l;
     //right
-    private DcMotor r;
+    //private DcMotor r;
     //power
-    private double p;
+    private double p = 0.25;
+    Input input = new Input();
     @Override
     public void init() {
         l = hardwareMap.get(DcMotor.class, "left");
         l.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        r = hardwareMap.get(DcMotor.class, "right");
-        r.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //r = hardwareMap.get(DcMotor.class, "right");
+        //r.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //r.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     @Override
@@ -28,30 +32,33 @@ public class LauncherTesting extends OpMode {
         //run
         if(gamepad1.a){
             l.setPower(p);
-            r.setPower(p);
+            //r.setPower(p);
         } else {
             l.setPower(0);
-            r.setPower(0);
+            //r.setPower(0);
         }
 
         //change power
-        if(gamepad1.x){
+        if(input.x.down()){
             p += 0.05;
         }
-        if(gamepad1.y){
+        if(input.y.down()){
             p -= 0.05;
         }
 
         //Reverse
-        if(gamepad1.b && l.getPower() == 0 ){
+        if(input.b.down()){
             if(l.getDirection() == DcMotorSimple.Direction.REVERSE){
                 l.setDirection(DcMotorSimple.Direction.FORWARD);
-                r.setDirection(DcMotorSimple.Direction.FORWARD);
+                //r.setDirection(DcMotorSimple.Direction.REVERSE);
             } else {
                 l.setDirection(DcMotorSimple.Direction.REVERSE);
-                r.setDirection(DcMotorSimple.Direction.REVERSE);
+              //  r.setDirection(DcMotorSimple.Direction.FORWARD);
             }
         }
 
+        input.pollGamepad(gamepad1);
+
+        telemetry.addData("Current speed: ", p);
     }
 }

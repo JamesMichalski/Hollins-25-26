@@ -13,10 +13,13 @@ import static org.firstinspires.ftc.teamcode.aProccedural.Constants.LAUNCHER_POW
 import static org.firstinspires.ftc.teamcode.aProccedural.Constants.LAUNCHER_RUN;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.teamcode.aProccedural.Components;
 import org.firstinspires.ftc.teamcode.aProccedural.Constants;
 import org.firstinspires.ftc.teamcode.aProccedural.Input;
 
+@TeleOp
 public class CompDrive extends OpMode {
 
     //Instantiated new input
@@ -72,9 +75,9 @@ public class CompDrive extends OpMode {
         /* ---------- Drivetrain ---------- */
 
         //Drivetrain movement values
-        double forward = gamepad1.left_stick_y;
-        double strafes = gamepad1.left_stick_x;
-        double rotates = gamepad1.right_stick_x;
+        double forward = gamepad1.left_stick_y;  //x
+        double strafes = gamepad1.left_stick_x;  //y
+        double rotates = gamepad1.right_stick_x; //rx
 
         //Setting Powers
         leftFront.setPower(forward + strafes + rotates);
